@@ -1,0 +1,103 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --cell-size: calc(1.5rem + 4vw);
+  --cell-black: #333;
+  --cell-white: #fff;
+  --cell-count: 8;
+  
+  --piece-size: calc(var(--cell-size) * 0.7);
+  --piece-black: brown;
+  --piece-white: bisque;
+}
+
+body {
+  background-color: #f2f2f2;
+  font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+  margin: 0;  
+}
+
+h1 {
+  color: #373fff;
+}
+
+.checkerboard {
+  align-items: center;
+  background-color: darkcyan;
+  display: flex;
+  justify-content: center;
+  padding: 4rem;
+}
+
+.cell-parent { 
+  display: grid;
+  grid-template-columns: repeat(var(--cell-count), 1fr);
+}
+
+.cell {
+  align-items: center;
+  display: flex;
+  height: var(--cell-size);
+  justify-content: center;
+  width: var(--cell-size);
+}
+
+.cell--white {
+  background-color: var(--cell-white);
+}
+
+.cell--black {
+  background-color: var(--cell-black);
+} 
+
+.cell--legal-move {
+  background-color: #505;
+}
+
+.piece {
+  border-radius: 50%;
+  cursor: pointer;
+  height: var(--piece-size);
+  width: var(--piece-size);
+}
+
+.piece--white {
+  background-color: var(--piece-white);
+}
+
+.piece--black {
+  background-color: var(--piece-black);
+}
+
+.piece--double {
+  position: relative; 
+}
+
+.piece--double::after {
+  content: '👑';
+  font-size: calc(var(--piece-size) / 2);
+  font-weight: 600;
+  height: var(--piece-size);
+  left: 0;
+  line-height: var(--piece-size);
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 100%;
+}
+
+.piece--is-dragged {
+  pointer-events: none;
+  position: absolute;
+/*   transform: translate(-50%, -50%); */
+}
+
+footer {
+  border-top: 1px solid lightgrey;
+  margin-top: 50px;
+  padding-top: 25px;
+}
